@@ -3,6 +3,9 @@
 ### Changed
 - Use JSON-LD WG tests.
 
+### Added
+- Add README note about running json-ld.org test suite.
+
 ## 1.0.4 - 2018-08-17
 
 ### Fixed
