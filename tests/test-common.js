@@ -8,6 +8,7 @@
  */
 const EarlReport = require('./earl-report');
 const join = require('join-path-js');
+const rdfCanonize = require('rdf-canonize');
 
 module.exports = function(options) {
 
@@ -538,7 +539,12 @@ function compareExpectedNQuads(test, result) {
   let _expect;
   return readTestNQuads(_getExpectProperty(test))(test).then(expect => {
     _expect = expect;
-    assert.equal(result, expect);
+    let opts = {algorithm: 'URDNA2015'};
+    let expectDataset = rdfCanonize.NQuads.parse(expect);
+    let expectCmp = rdfCanonize.canonizeSync(expectDataset, opts);
+    let resultDataset = rdfCanonize.NQuads.parse(result);
+    let resultCmp = rdfCanonize.canonizeSync(resultDataset, opts);
+    assert.equal(resultCmp, expectCmp);
   }).catch(err => {
     if(options.bailOnError) {
       console.log('\nTEST FAILED\n');
