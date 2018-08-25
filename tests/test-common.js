@@ -43,8 +43,6 @@ const TEST_TYPES = {
         /^#tli05/,
         // terms
         /^#tp001/,
-        // scoped context on type
-        /^#tc012/,
         // rel iri
         /^#t0095/
       ]
@@ -75,8 +73,6 @@ const TEST_TYPES = {
         // mode
         /^#tp001/,
         /^#tp002/,
-        // scoped context on type
-        /^#tc011/,
         // rel iri
         /^#t0092/,
         // remote
